@@ -11,15 +11,15 @@ data class Product(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     @NotNull
-    val name: String? = null,
-    val productCode: String? = null,
+    var name: String? = null,
+    var productCode: String? = null,
     @NotNull
-    val price: Double? = null,
+    var price: Double? = null,
     @NotNull
     var inventory: Int? = null,
     @Enumerated(EnumType.STRING)
     @NotNull
-    val categoryEnum: CategoryEnum? = null,
+    var categoryEnum: CategoryEnum? = null,
     @ManyToMany(mappedBy = "products", fetch = FetchType.LAZY)
     @JsonIgnore
     var carts: MutableList<Cart>? = null
