@@ -12,7 +12,7 @@ class CartMapper {
         return CartDto(
             id = cart.id,
             productsDto = cart.products?.map { product ->  productMapper.mapEntityToDto(product)}?.toMutableList(),
-            userDto = cart.user,
+            //userDto = cart.user,
             orders = cart.orders
         )
     }
@@ -21,7 +21,7 @@ class CartMapper {
         return Cart(
             id = cartDto.id,
             products = cartDto.productsDto?.map { productDto ->  productMapper.mapDtoToEntity(productDto)}?.toMutableList(),
-            user = cartDto.userDto,
+            //user = cartDto.userDto,
             orders = cartDto.orders
         )
     }

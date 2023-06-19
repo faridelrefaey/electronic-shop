@@ -29,13 +29,10 @@ class ProductServiceTest {
 
     @MockK
     private lateinit var productRepository: ProductRepository
-
     private lateinit var productService: ProductService
-
     private lateinit var product1: Product
     private lateinit var product2: Product
     private var productsList: MutableList<Product> = mutableListOf()
-
     private val productMapper: ProductMapper = ProductMapper()
 
     @BeforeEach

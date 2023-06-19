@@ -21,7 +21,7 @@ class CartService(
     @Autowired private val productRepository: ProductRepository
 ): ICartService {
 
-    private final val cartMapper: CartMapper = CartMapper()
+    private val cartMapper: CartMapper = CartMapper()
 
     override fun addProductToCart(userId: Long?, productId: Long?): CartDto {
         if (userId == null || productId == null) {
@@ -31,19 +31,10 @@ class CartService(
         val fetchedCart: Optional<Cart> = cartRepository.getCartFromUserId(userId)
 
         if(fetchedCart.isEmpty){
-            throw IdDoesNotExistException("No cart was found for the given user ID")
+            throw IdDoesNotExistException("The given user ID does not exist")
         }
 
-        if(fetchedCart.get().id == null){
-            throw IdDoesNotExistException("Bad cart")
-        }
-
-        val optionalCart: Optional<Cart> = cartRepository.findById(fetchedCart.get().id!!)
-        if(optionalCart.isEmpty){
-            throw IdDoesNotExistException("No cart was found with the given ID")
-        }
-
-        val cart: Cart = optionalCart.get()
+        val cart: Cart = fetchedCart.get()
         val product: Optional<Product> = productRepository.findById(productId)
         if(!product.isPresent){
             throw IdDoesNotExistException("No product with the given ID could be found")
