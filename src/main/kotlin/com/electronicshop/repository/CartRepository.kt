@@ -12,6 +12,7 @@ import java.util.*
 @Transactional
 interface CartRepository: JpaRepository<Cart, Long> {
 
-    @Query(value = "SELECT c FROM Cart c JOIN c.user u WHERE u.id = :userId")
+    //@Query(value = "SELECT c FROM Cart c JOIN c.user u WHERE u.id = :userId")
+    @Query(value = "SELECT u.cart FROM User u WHERE u.id = :userId ")
     fun getCartFromUserId(@Param("userId") userId: Long): Optional<Cart>
 }

@@ -13,8 +13,8 @@ import org.jetbrains.annotations.NotNull
 data class CartDto(
     val id: Long? = null,
     var productsDto: MutableList<ProductDto>? = null,
-    @JsonIgnore
-    val userDto: User? = null,
+//    @JsonIgnore
+//    val userDto: User? = null,
     @JsonIgnore
     val orders: MutableList<Order>? = null
 )

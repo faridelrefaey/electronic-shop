@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull
 data class Cart(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    var id: Long? = null,
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -18,11 +18,11 @@ data class Cart(
     )
     var products: MutableList<Product>? = null,
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    @NotNull
-    @JsonIgnore
-    val user: User? = null,
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id")
+//    @NotNull
+//    @JsonIgnore
+//    val user: User? = null,
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cart",cascade = [CascadeType.ALL])
     @JsonIgnore

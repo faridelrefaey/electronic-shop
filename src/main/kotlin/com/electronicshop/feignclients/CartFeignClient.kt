@@ -3,9 +3,11 @@ package com.electronicshop.feignclients
 import com.electronicshop.dto.CartDto
 import com.electronicshop.entity.Cart
 import org.springframework.cloud.openfeign.FeignClient
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.ResponseStatus
 
 @FeignClient(name="cart-feign-client", url = "http://localhost:8000")
 interface CartFeignClient {

@@ -13,7 +13,7 @@ data class User(
     @Column(unique = true)
     @NotNull
     val name: String? = null,
-    @OneToOne(mappedBy = "user", cascade = [CascadeType.REMOVE])
+    @OneToOne(cascade = [CascadeType.REMOVE])
     @JoinColumn(name = "cart_id")
     @NotNull
     var cart: Cart? = null,

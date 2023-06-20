@@ -27,8 +27,12 @@ class UserService(
             throw InvalidRequestBodyException("User object provided is invalid")
         }
 
+
+        val cart: Cart = Cart(id = null, products = mutableListOf(), orders = mutableListOf())
+        val savedCart: Cart = cartRepository.save(cart)
+
         val user: User = userMapper.mapDtoToEntity(userDto)
-        user.cart = cartRepository.save(Cart(id = null, products = mutableListOf(), user = user, orders = null))
+        user.cart = savedCart
         val savedUser: User = userRepository.save(user)
         return userMapper.mapEntityToDto(savedUser)
     }

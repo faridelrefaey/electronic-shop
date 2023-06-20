@@ -127,7 +127,7 @@ class CartServiceTest {
 
     @Test
     fun testRemoveProductsFromCart(){
-        val expectedCart: Cart = Cart(1L, products = productsList, user = null, orders = mutableListOf())
+        val expectedCart: Cart = Cart(1L, products = productsList, orders = mutableListOf())
 
         every { cartRepository.getCartFromUserId(1L) } returns Optional.of(cart)
         every { cartRepository.save(expectedCart) } returns expectedCart
@@ -145,7 +145,7 @@ class CartServiceTest {
 
     @Test
     fun testRemoveProductsFromCartEmptyCart(){
-        val expectedCart: Cart = Cart(1L, products = mutableListOf(), user = null, orders = mutableListOf())
+        val expectedCart: Cart = Cart(1L, products = mutableListOf(), orders = mutableListOf())
 
         every { cartRepository.getCartFromUserId(1L) } returns Optional.of(expectedCart)
 
