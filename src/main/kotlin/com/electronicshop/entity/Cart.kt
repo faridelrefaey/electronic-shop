@@ -10,7 +10,7 @@ data class Cart(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = [CascadeType.MERGE])
     @JoinTable(
         name = "cart_product",
         joinColumns = [JoinColumn(name = "cart_id")],

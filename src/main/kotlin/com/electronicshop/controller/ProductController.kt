@@ -43,7 +43,7 @@ class ProductController(@Autowired private val iProductService: IProductService)
 
     @PutMapping("/decrease/{id}")
     @Hidden
-    fun updateProduct(@PathVariable id: Long): ResponseEntity<String> {
+    fun decreaseProductInventory(@PathVariable id: Long): ResponseEntity<String> {
         return ResponseEntity(iProductService.decreaseInventoryForProduct(id), HttpStatus.OK)
     }
 }

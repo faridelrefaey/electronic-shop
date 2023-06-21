@@ -57,7 +57,7 @@ class OrderService(
 
         orderRepository.save(order)
         for(product in fetchedCart.products!!){
-            product.id?.let { productFeignClient.updateProduct(it) }
+            product.id?.let { productFeignClient.decreaseProductInventory(it) }
         }
         try {
             cartFeignClient.removeProductsFromCart(userId)

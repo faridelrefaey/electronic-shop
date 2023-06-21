@@ -87,8 +87,8 @@ class OrderServiceTest {
         every { userFeignClient.getUserById(1L) } returns userMapper.mapEntityToDto(user)
         every { orderRepository.save(match { it is Order }) } returns order
         every { cartFeignClient.removeProductsFromCart(1L) } returns "Cart for userId 1 has been emptied"
-        every { productFeignClient.updateProduct(1L) } returns "Inventory for ${product1.name} decreased by one"
-        every { productFeignClient.updateProduct(2L) } returns "Inventory for ${product2.name} decreased by one"
+        every { productFeignClient.decreaseProductInventory(1L) } returns "Inventory for ${product1.name} decreased by one"
+        every { productFeignClient.decreaseProductInventory(2L) } returns "Inventory for ${product2.name} decreased by one"
 
 
         val expectedString: String = "The order with number"

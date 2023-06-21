@@ -20,7 +20,7 @@ data class Product(
     @Enumerated(EnumType.STRING)
     @NotNull
     var categoryEnum: CategoryEnum? = null,
-    @ManyToMany(mappedBy = "products", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "products", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
     @JsonIgnore
     var carts: MutableList<Cart>? = null
 ) {

@@ -9,16 +9,16 @@ import jakarta.validation.constraints.NotNull
 data class Order(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long?,
+    val id: Long? = null,
     @NotNull
-    val orderNumber: String?,
+    val orderNumber: String? = null,
     @ManyToOne
     @JoinColumn(name = "user_id")
     @NotNull
-    val user: User?,
+    val user: User? = null,
     @ManyToOne
     @JoinColumn(name = "cart_id")
     @NotNull
-    val cart: Cart?
+    val cart: Cart? = null
 ) {
 }

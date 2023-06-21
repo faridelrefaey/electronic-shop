@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.PutMapping
 interface ProductFeignClient {
 
     @PutMapping("/product/decrease/{id}")
-    fun updateProduct(@PathVariable id: Long): String
+    fun decreaseProductInventory(@PathVariable id: Long): String
 }
